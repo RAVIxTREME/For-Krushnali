@@ -1,0 +1,224 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For you Krushnali 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 90%;
+            transition: all 0.5s ease;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .gif-container img {
+            width: 150px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yes-btn {
+            background-color: #4caf50;
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        #yes-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #no-btn {
+            background-color: #f44336;
+            color: white;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Success State Styling */
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .whatsapp {
+            background-color: #25D366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .call {
+            background-color: #007bff;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .contact-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: float 3s linear infinite;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="card" id="proposal-card">
+        <div class="gif-container">
+          
+            <img src="https://media.tenor.com/w9vA96O3W7IAAAAi/cute-bear.gif" alt="Cute Bear">
+        </div>
+        <h1>Hey Krushnali... 🌸</h1>
+        <p>From the moment I met you, everything just clicked. Will you make me the happiest person alive? 💖</p>
+        
+        <div class="btn-group">
+            <button id="yes-btn" onclick="celebrate()">Yes! 😍</button>
+            <button id="no-btn" onmouseover="moveNoButton()" onclick="moveNoButton()">No 😢</button>
+        </div>
+    </div>
+
+    
+    <div class="card hidden" id="success-card">
+        <div class="gif-container">
+            <img src="https://media.tenor.com/gU8XM6Zmo7QAAAAi/cute-bubu-bubu-dudu.gif" alt="Happy Dance">
+        </div>
+        <h1>Yayyy! 🎉🥳</h1>
+        <p>I knew you'd say yes! You just made my entire world. Can't wait to talk to you right now! 👇</p>
+        
+        <div class="contact-buttons">
+            <a href="https://wa.me/919075412130?text=Yes!%20I%20accept!%20❤️" class="contact-btn whatsapp" target="_blank">
+                💬 Text me on WhatsApp
+            </a>
+            <a href="tel:9075412130" class="contact-btn call">
+                📞 Call Me Now
+            </a>
+        </div>
+    </div>
+
+    <script>
+        
+        function moveNoButton() {
+            const noBtn = document.getElementById('no-btn');
+            
+            
+            const padding = 100;
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding) + padding/2;
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding) + padding/2;
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        
+        function celebrate() {
+            document.getElementById('proposal-card').classList.add('hidden');
+            document.getElementById('success-card').classList.remove('hidden');
+            
+            
+            setInterval(createHeart, 300);
+        }
+
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 2 + 's'; 
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

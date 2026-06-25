@@ -4,7 +4,7 @@
 An elegant, interactive, and fully responsive single-page web application designed with love to ask a very special question. 
 
 ## 🚀 Live Demo
-Check out the live website here: **[ravixtreme.github.io/For-Krushnali/]**
+Check out the live website here: **[https://ravixtreme.github.io/For-Krushnali/]**
 
 ---
 
